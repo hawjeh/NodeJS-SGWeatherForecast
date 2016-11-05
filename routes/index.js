@@ -7,6 +7,12 @@ module.exports = (app) => {
     res.redirect('/weather');
   });
 
+  app.get('/about', (req, res) => {
+    res.render('pages/about', {
+      pageTitle: 'About'
+    });
+  });
+
   app.get('/weather', (req, res) => {
     weather.GetForecast((obj) => {
       res.render('pages/weather', {
