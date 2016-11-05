@@ -6,33 +6,84 @@
       <h1 class="title text-center"><b>Singapore Weather Forecast</b></h1>
       <% if(weatherObj.statusCode == 200) { %>
         <div class="success">
-          <div class="row">
-            <% weatherObj.forecasts.forEach(function(day) { %>
-              <div class="col-md-3 col-sm-6 col-xs-12 text-center">
-                <div class="forecast">
-                  <h4><%= day.timestamp %></h4>
-                  <hr/>
-                  <p>
-                    <%= day.forecast %>
-                  </p>
-                </div>
-                <div class="temperature">
-                  <p>
-                    T: <%= day.temperature.low %> &deg;C - <%= day.temperature.high %> &deg;C
-                  </p>
-                </div>
-                <div class="humidity">
-                  <p>
-                    H: <%= day.relative_humidity.low %> % - <%= day.relative_humidity.high %> %
-                  </p>
-                </div>
-                <div class="windspeed">
-                  <p>
-                    WS: <%= day.wind.speed.low %> km/h - <%= day.wind.speed.high %> km/h
-                  </p>
-                </div>
+          <div class="row text-center">
+            <div class="col-md-6 col-sm-12">
+              <div class="forecast">
+                <h4><%= weatherObj.forecasts[0].timestamp %></h4>
+                <hr/>
+                <p>
+                  <%= weatherObj.forecasts[0].forecast %>
+                </p>
               </div>
-            <% }); %>
+              <div class="temperature">
+                <p>
+                  T: <%= weatherObj.forecasts[0].temperature.low %> &deg;C - <%= weatherObj.forecasts[0].temperature.high %> &deg;C
+                </p>
+              </div>
+              <div class="humidity">
+                <p>
+                  H: <%= weatherObj.forecasts[0].relative_humidity.low %> % - <%= weatherObj.forecasts[0].relative_humidity.high %> %
+                </p>
+              </div>
+              <div class="windspeed">
+                <p>
+                  WS: <%= weatherObj.forecasts[0].wind.speed.low %> km/h - <%= weatherObj.forecasts[0].wind.speed.high %> km/h
+                </p>
+              </div>
+              <div class="regions">
+                <p>
+                  South: <%= weatherObj.forecasts[0].regions.south %>
+                </p>
+                <p>
+                  North: <%= weatherObj.forecasts[0].regions.north %>
+                </p>
+                <p>
+                  East: <%= weatherObj.forecasts[0].regions.east %>
+                </p>
+                <p>
+                  Central: <%= weatherObj.forecasts[0].regions.central %>
+                </p>
+                <p>
+                  West: <%= weatherObj.forecasts[0].regions.west %>
+                </p>
+              </div>
+              <div>
+                <hr class="hidden-md hidden-lg"/>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <% weatherObj.forecasts.forEach(function(day, idx) { %>
+                <% if(idx > 0) { %>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="forecast">
+                      <h4><%= day.timestamp %></h4>
+                      <hr/>
+                      <p>
+                        <%= day.forecast %>
+                      </p>
+                    </div>
+                    <div class="temperature">
+                      <p>
+                        T: <%= day.temperature.low %> &deg;C - <%= day.temperature.high %> &deg;C
+                      </p>
+                    </div>
+                    <div class="humidity">
+                      <p>
+                        H: <%= day.relative_humidity.low %> % - <%= day.relative_humidity.high %> %
+                      </p>
+                    </div>
+                    <div class="windspeed">
+                      <p>
+                        WS: <%= day.wind.speed.low %> km/h - <%= day.wind.speed.high %> km/h
+                      </p>
+                    </div>
+                    <div>
+                      <hr class="hidden-md hidden-lg"/>
+                    </div>
+                  </div>
+                <% } %>
+              <% }); %>
+            </div>
           </div>
         </div>
       <% } else { %>

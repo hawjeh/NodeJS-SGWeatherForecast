@@ -8,7 +8,7 @@ const headerConfig = {
 
 /** Helper Functions **/
 var getDateName = (date) => {
-  var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   var dateNow = new Date(Date.parse(date));
   return days[dateNow.getDay()];
 };
@@ -34,14 +34,10 @@ var GetForecast = (callback) => {
 
       var forecasts = [];
       result.general.timestamp = "Today";
+      result.general.regions = result.periods[0].regions;
       forecasts.push(result.general);
       results.forecasts.forEach((val, idx, array) => {
-        if (idx === array.length - 1)
-          return;
-        if (idx === 0)
-          val.timestamp = "Tomorrow";
-        else
-          val.timestamp = getDateName(val.timestamp);
+        val.timestamp = getDateName(val.timestamp);
         delete val.date;
         forecasts.push(val);
       });
