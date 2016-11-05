@@ -1,0 +1,11 @@
+html, body {
+    font-size: 12px;
+}
+
+.title {
+    min-height: 50px;
+}
+
+.forecast p {
+    min-height: 40px;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <% include ../partials/header %>
+  <body>
+    <div class="container">
+      <h1 class="title text-center"><b>Singapore Weather Forecast</b></h1>
+      <% if(weatherObj.statusCode == 200) { %>
+        <div class="success">
+          <div class="row">
+            <% weatherObj.forecasts.forEach(function(day) { %>
+              <div class="col-md-3 col-sm-6 col-xs-12 text-center">
+                <div class="forecast">
+                  <h4><%= day.timestamp %></h4>
+                  <hr/>
+                  <p>
+                    <%= day.forecast %>
+                  </p>
+                </div>
+                <div class="temperature">
+                  <p>
+                    T: <%= day.temperature.low %> &deg;C - <%= day.temperature.high %> &deg;C
+                  </p>
+                </div>
+                <div class="humidity">
+                  <p>
+                    H: <%= day.relative_humidity.low %> % - <%= day.relative_humidity.high %> %
+                  </p>
+                </div>
+                <div class="windspeed">
+                  <p>
+                    WS: <%= day.wind.speed.low %> km/h - <%= day.wind.speed.high %> km/h
+                  </p>
+                </div>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+      <% } else { %>
+        <p class="fail">
+          Fail
+        </p>
+      <% } %>
+    </div>
+    <% include ../partials/footer %>
+  </body>
+
+</html>
