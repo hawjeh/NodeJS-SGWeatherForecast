@@ -41,7 +41,7 @@ var GetForecast = (callback) => {
         delete val.date;
         forecasts.push(val);
       });
-console.log(forecasts);
+
       callback({
         "statusCode": "200",
         "statusMessage": "Success",
