@@ -90,7 +90,12 @@
         </div>
       <% } else { %>
         <p class="fail">
-          Fail
+          <h3>
+            Opps... Something wrong with the http call.
+          </h3>
+          <p>
+            <%= weatherObj.statusMessage %>
+          </p>
         </p>
       <% } %>
       <br/>

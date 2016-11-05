@@ -22,6 +22,14 @@ app.use((req, res, next) => {
   next();
 });
 
+// No Cache
+app.use((req, res, next) => {
+    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    res.header('Expires', '-1');
+    res.header('Pragma', 'no-cache');
+    next()
+});
+
 // Maintenance
 // app.use((req, res, next) => {
 //   res.render('misc/maintenance');
