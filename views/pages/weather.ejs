@@ -8,6 +8,7 @@
         <div class="success">
           <div class="row text-center">
             <div class="col-md-6 col-sm-12">
+              <h3>24 Hours Weather Forecast</h3>
               <div class="forecast">
                 <h4><%= weatherObj.forecasts[0].timestamp %></h4>
                 <hr/>
@@ -52,6 +53,7 @@
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
+              <h3>4 Days Weather Forecast</h3>
               <% weatherObj.forecasts.forEach(function(day, idx) { %>
                 <% if(idx > 0) { %>
                   <div class="col-md-6 col-sm-12">
