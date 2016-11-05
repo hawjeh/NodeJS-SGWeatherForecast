@@ -31,7 +31,7 @@ var GetForecast = (callback) => {
     .then(axios.spread(function(day, days) {
       var result = day.data.items[0];
       var results = days.data.items[0];
-      
+
       var forecasts = [];
       result.general.timestamp = "Today";
       result.general.regions = result.periods[0].regions;
@@ -41,7 +41,7 @@ var GetForecast = (callback) => {
         delete val.date;
         forecasts.push(val);
       });
-
+console.log(forecasts);
       callback({
         "statusCode": "200",
         "statusMessage": "Success",
